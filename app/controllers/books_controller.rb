@@ -19,6 +19,7 @@ class BooksController < ApplicationController
   		redirect_to @book, notice: "successfully created book!"#保存された場合の移動先を指定。
   	else
   		@books = Book.all
+      @user = current_user
   		render 'index'
   	end
   end
