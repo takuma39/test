@@ -3,7 +3,7 @@
 	<div class="col-xs-3">
 
 		<h2>User info</h2>
-		<%= render 'users/profile', user: current_user %>
+		<%= render 'users/profile', user: @user %>
 
 		<h2>New book</h2>
 		<%= render 'books/newform' %>
@@ -16,12 +16,12 @@
 		<table class="table">
 				<tr>
 					<td>
-						<%= link_to (@books.user) do %>
+						<%= link_to user_path(@books.user_id) do %>
 						<%= attachment_image_tag(@book.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
 						<%= @books.user.name %>
 						<% end %>
 					</td>
-					<td><%= link_to @books.title, @book %></td>
+					<td><%= link_to @books.title, book_path(@books) %></td>
 					<td><%= @books.body %></td>
 					<td><%= link_to "Edit",edit_book_path(@books), class: "btn-sm btn-success edit_book_#{@books.id}" %></td>
 					<td><%= link_to "Destroy",@books, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book.id}" %></td>
