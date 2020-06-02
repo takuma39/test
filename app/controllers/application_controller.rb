@@ -21,5 +21,6 @@ def after_sign_in_path_for(resource)
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
     #sign_upの際にnameのデータ操作を許。追加したカラム。
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
   end
 end
