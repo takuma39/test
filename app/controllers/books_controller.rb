@@ -3,15 +3,16 @@ class BooksController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def show
-  	@books = Book.find(params[:id])
-    @book = Book.new
-    @user = @books.user
+  	@book = Book.find(params[:id])
+    @user = @book.user
+    @book_comment = BookComment.new
   end
 
   def index
   	@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
     @book = Book.new
     @user = current_user
+    @book_comment = BookComment.new
   end
 
   def create
