@@ -14,7 +14,7 @@
     </div>
 <% end %>
 
-<%= render 'books/newform', book: Book.new %>
+<%= render 'books/newform', book: @book %>
 <%= link_to "Show", @book, class: "book_#{@book.id}" %>
 <%= link_to "Back", books_path, class: "back" %>
 

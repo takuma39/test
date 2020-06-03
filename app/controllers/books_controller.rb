@@ -1,18 +1,15 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!,only: [:create,:edit,:update,:destroy,:index]
+  before_action :correct_user, only: [:edit, :update, :destroy,]
 
   def show
   	@book = Book.find(params[:id])
-    @user = @book.user
     @book_comment = BookComment.new
   end
 
   def index
   	@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
     @book = Book.new
-    @user = current_user
-    @book_comment = BookComment.new
   end
 
   def create
@@ -22,14 +19,12 @@ class BooksController < ApplicationController
   		redirect_to @book, notice: "successfully created book!"#保存された場合の移動先を指定。
   	else
   		@books = Book.all
-      @user = current_user
   		render 'index'
   	end
   end
 
   def edit
   	@book = Book.find(params[:id])
-
   end
 
 
@@ -39,7 +34,7 @@ class BooksController < ApplicationController
   	if @book.update(book_params)
   		redirect_to @book, notice: "successfully updated book!"
   	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
-  		render :edit
+  		render 'edit'
   	end
   end
 
@@ -58,6 +53,6 @@ class BooksController < ApplicationController
   def correct_user
       @book = Book.find(params[:id])
       redirect_to books_path if current_user != @book.user
-    end
+  end
 
 end
