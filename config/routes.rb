@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#top'
   get 'home/about'
+  get '/search' => 'search#search'
   resources :users, only: [:show, :edit, :update, :index]
   get 'users/:id/follows' => 'users#following', as: 'follows'
   get 'users/:id/followers' => 'users#followers', as: 'followers'
