@@ -5,7 +5,7 @@ def search
          if params[:search_type] == 'Users'
              case params[:search_method]
 	             when 'perfect_match' then
-	                 @models = User.where("#{params[:search_word]}")
+	                 @models = User.where("name LIKE?","#{params[:search_word]}")
 	             when "forward_match" then
 	                 @models = User.where("name LIKE?","#{params[:search_word]}%")
 	             when "backend_match" then
@@ -17,7 +17,7 @@ def search
          elsif params[:search_type] == 'Books'
              case params[:search_method]
 	             when 'perfect_match' then
-	                 @models = Book.where("#{params[:search_word]}")
+	                 @models = Book.where("title LIKE?","#{params[:search_word]}")
 	             when "forward_match" then
 	                 @models = Book.where("title LIKE?","#{params[:search_word]}%")
 	             when "backend_match" then
