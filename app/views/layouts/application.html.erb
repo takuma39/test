@@ -42,7 +42,8 @@
       <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
 
     <!-- 検索フォーム -->
-    <% if current_user %>
+    <% if user_signed_in? %>
+      <div class="search-form" style="margin-top: 30px; text-align: center;">
       <%= form_tag(search_path,:method => 'get') do %>
         <%= text_field_tag :search_word %>
         <%= select_tag :search_type, options_for_select(['Users', 'Books']) %>
@@ -50,6 +51,7 @@
         <%= submit_tag 'Search', :name => nil %>
      <% end %>
     <% end %>
+      </div>
 
 
       <%= yield %>

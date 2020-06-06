@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+before_action :authenticate_user!
 
 def search
 	@search_word = params[:search_word]
@@ -31,5 +32,3 @@ def search
  end
 
 
-# 空欄でやると全て表示される
-# 全部一致しない場合の対策
