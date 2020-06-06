@@ -55,14 +55,15 @@
 
 
 			<!-- コメント一覧 -->
-			<%= render 'book_comments/comments', book: @book %>
-
+			<div id="comments_area">
+				<%= render 'book_comments/comments', book: @book %>
+			</div>
 
 			<!-- 投稿エラー文 -->
 
 
 			<!-- コメント投稿 -->
-			<%= form_for [@book, @book_comment] do |f| %>
+			<%= form_with(model: [@book, @book_comment]) do |f| %>
 			    <div class="row">
 			        <div class="col-sm-12">
 			            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
