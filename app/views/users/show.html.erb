@@ -52,5 +52,10 @@
 </div>
 
 </div>
-<!--books一覧 -->
 
+<!--map -->
+<% if current_user.id == @user.id %>
+	<div class="row">
+		<%= render 'users/map' %>
+	</div>
+<% end %>

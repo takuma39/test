@@ -75,3 +75,12 @@ gem "refile-mini_magick"
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+
+# 住所
+gem 'jp_prefecture'
+
+# APIKEYを隠す
+gem 'dotenv-rails'
+
+# 緯度　経緯
+gem "geocoder"

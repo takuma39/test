@@ -15,6 +15,34 @@
     <%= f.email_field :email, autofocus: true, class: "email" %>
   </div>
 
+<!-- 住所 -->
+  <div class="field">
+    <%= f.label :postcode %><br />
+    <%= f.text_field :postcode, autofocus: true,　placeholder:'郵便番号を半角で入力',  class: "postcode" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prefecture_code %><br />
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: '都道府県', class: "prefecture_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_city %><br />
+    <%= f.text_field :address_city, autofocus: true,　placeholder: '市町名を入力', class: "address_city" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_street %><br />
+    <%= f.text_field :address_street, autofocus: true,　placeholder: '町名・番地', class: "address_street" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_building %><br />
+    <%= f.text_field :address_building, autofocus: true,　placeholder: '建物、部屋番号を入力', class: "address_building" %>
+  </div>
+
+
+  <!-- パスワード -->
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -35,3 +63,6 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+<!-- 26 codeの前はname -->
