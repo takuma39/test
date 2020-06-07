@@ -7,20 +7,17 @@ def create
     @comment.book_id = @book.id
     if @comment.save
        flash[:success] = "Comment was successfully created."
-       redirect_to book_path(@book)
     else
       @comment = BookComment.where(book_id: @book.id) # render用
-      render '/books/show'
     end
 end
 
 def destroy
-    @comment = BookComment.find(params[:book_id])
+    @comment = BookComment.find(params[:id])
     if @comment.user != current_user
        redirect_to request.referer
     end
     @comment.destroy
-    redirect_to request.referer
 end
 
 
